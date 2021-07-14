@@ -67,7 +67,3 @@ function getTriangle(a, b, c) {
 		return triangle =  new pseudoTriangele();
 	}
 }
-
-triangle = getTriangle(1,3,100)
-
-console.log(triangle);
