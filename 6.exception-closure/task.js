@@ -47,7 +47,7 @@ class Triangle {
 		if(isNaN(this.a) || isNaN(this.b) && isNaN(this.c) || this.a + this.b < this.c || this.a + this.c < this.b || this.b + this.c < this.a) {
 			throw new Error('Треугольник с такими сторонами не существует');
 		}
-		return this;
+		return;
 	}
 }
 
