@@ -103,7 +103,13 @@ class Library {
 class Student {
   constructor(name) {
   	this.name = name;
-  	this.subjects; 
+  	this.subjects = []; 
+  }
+
+  checkSubject(subject) {
+  	if(!(this.subjects.find(item => item.name === subject))) {
+  		this.subjects.push({name: subject, marks:[]});	
+  	}
   }
 
   checkMark(mark) {
@@ -115,18 +121,13 @@ class Student {
   }
 
   addMark(mark, subject) {
-  	mark = (this.checkMark(mark) === undefined) ? 0 : mark;
-  	if(this.subjects === undefined) {
-  		this.subjects = [{name: subject, marks:[mark]}];
-  	} else if(!(this.subjects.find(item => item.name === subject))) {
-	  	this.subjects.push({name: subject, marks:[mark]});
-	  } else {
-	  	this.subjects.find(function(item){
-	  		if(item.name === subject) {
-	  			item.marks.push(mark);
-	  		}
-	  	});
-	  }
+  	this.checkSubject(subject);
+  	mark = this.checkMark(mark);
+  	this.subjects.find(function(item){
+	  	if(item.name === subject && Number.isInteger(mark)) {
+	  		item.marks.push(mark);
+	  	}
+	  });
   }
 
   getAverageBySubject(subject) {
