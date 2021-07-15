@@ -107,7 +107,6 @@ class Student {
   }
 
   checkMark(mark) {
-  	console.log(mark)
   	if(mark > 5 || mark < 1) {
   		return alert('Ошибка, оценка должна быть числом от 1 до 5');
   	} else {
@@ -116,7 +115,7 @@ class Student {
   }
 
   addMark(mark, subject) {
-  	mark = this.checkMark(mark);
+  	mark = (this.checkMark(mark) === undefined) ? 0 : mark;
   	if(this.subjects === undefined) {
   		this.subjects = [{name: subject, marks:[mark]}];
   	} else if(!(this.subjects.find(item => item.name === subject))) {
@@ -163,4 +162,6 @@ student.addMark(6, "geometry"); // "Ошибка, оценка должна бы
 student.getAverageBySubject("geometry"); // Средний балл по предмету geometry 4.5
 student.getAverageBySubject("biology"); // Несуществующий предмет
 student.getAverage(); // Средний балл по всем предметам 4.75
-student.exclude("Исключен за попытку подделать оценки");
+//student.exclude("Исключен за попытку подделать оценки");
+
+console.log(student);
